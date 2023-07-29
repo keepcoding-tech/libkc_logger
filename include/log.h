@@ -24,20 +24,20 @@
 
 struct KClog {
   // will display a red error message on the screen
-  void (*log_error)(const char* message, const char* file,
-      const int line, const char* func);
+  void (*log_error)(const char* error, const char* description,
+      const char* file, const int line, const char* func);
 
   // will display a simple message on the screen
-  void (*log_message)(const char* message, const char* file,
-      const int line, const char* func);
+  void (*log_message)(const char* title, const char* message,
+      const char* file, const int line, const char* func);
 
   // will display a yellow error message on the screen
-  void (*log_warning)(const char* message, const char* file,
-      const int line, const char* func);
+  void (*log_warning)(const char* warning, const char* description,
+      const char* file, const int line, const char* func);
 
   // will write a message to a specified file
-  void (*log_to_file)(const char* message, const char* file,
-      const int line, const char* func);
+  void (*log_to_file)(const char* log, const char* message,
+      const char* file, const int line, const char* func);
 };
 
 // the constructor should be used to create a new instance
