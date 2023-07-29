@@ -36,8 +36,8 @@ struct KClog {
       const char* file, const int line, const char* func);
 
   // will write a message to a specified file
-  void (*log_to_file)(const char* log, const char* message,
-      const char* file, const int line, const char* func);
+  void (*log_to_file)(const char* file_path, const char* log,
+      const char* message, const char* file, const int line, const char* func);
 };
 
 // the constructor should be used to create a new instance

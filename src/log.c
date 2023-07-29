@@ -1,5 +1,7 @@
 #include "../include/log.h"
 
+#include <time.h>
+
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
 void display_console_error(const char* error, const char* description,
     const char* file, const int line, const char* func);
@@ -7,7 +9,7 @@ void display_console_message(const char* title, const char* message,
     const char* file, const int line, const char* func);
 void display_console_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func);
-void write_to_file(const char* log, const char* message,
+void write_to_file(const char* file_path, const char* log, const char* message,
     const char* file, const int line, const char* func);
 
 // MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS
@@ -81,6 +83,37 @@ void display_console_warning(const char* warning, const char* description,
 }
 
 // This function will write a message to a specified file.
-void write_to_file(const char* log, const char* message,
+void write_to_file(const char* filename, const char* log, const char* message,
     const char* file, const int line, const char* func) {
+  // open the file in append mode (creates a new file if it doesn't exist)
+  FILE *write_file = fopen(filename, "a");
+
+  // print an error and exit the program
+  if (write_file == NULL) {
+    char error_description[256];
+    sprintf(error_description, "Failed to open the specified file: %s", filename);
+    display_console_error("CANNOT_OPEN_FILE", error_description,
+        __FILE__, __LINE__, __func__);
+    exit(1);
+  }
+
+  // get the current timestamp
+  time_t now;
+  struct tm *tm_info;
+  char time_buffer[30];
+  time(&now);
+
+  // convert the timestamp to a human-readable string
+  tm_info = localtime(&now);
+  strftime(time_buffer, sizeof(time_buffer), "%Y-%m-%d %H:%M:%S", tm_info);
+
+  // writing data the log to the file
+  fprintf(write_file, "\n");
+  fprintf(write_file, "[%s]\n", time_buffer);
+  fprintf(write_file, "%s: in function ‘%s’\n", file, func);
+  fprintf(write_file, "%s:%d message: %s\n", file, line, log);
+  fprintf(write_file, "  %s\n", message);
+
+  // close the file
+  fclose(write_file);
 }
