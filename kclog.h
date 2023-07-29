@@ -1,12 +1,12 @@
-/* open source c library
- * ==================================
- *
- * kclog.h
- *
- * Daniel Tanase
- * 29/07/23
- *
- *
+// open source c library
+// ==================================
+//
+// kclog.h
+//
+// Daniel Tanase
+// 29/07/23
+
+/*
  * You can utilize this header file to import the complete kclog library
  * into your project. It includes headers for every sub-module within kclog.
  */
