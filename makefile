@@ -13,7 +13,7 @@
 
 # Specify the compiler and compiler flags
 CC := gcc
-STD := -std=c89
+STD := -std=c99
 CFLAGS := -Wall -Werror -Wpedantic -g -Iinclude
 
 # Specify the source and the include directory
