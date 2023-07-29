@@ -14,6 +14,6 @@
 #ifndef KCLOG_H
 #define KCLOG_H
 
-#include "include/kclog.h"
+#include "include/log.h"
 
 #endif /* KCLOG_H */

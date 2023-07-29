@@ -1,4 +1,4 @@
-#include "../include/kclog.h"
+#include "../include/log.h"
 
 int main() {
   struct KClog* log = new_log();
