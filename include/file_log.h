@@ -7,6 +7,13 @@
 // 30/07/23
 
 /*
+ * The FileLog structure provides a logging mechanism to write log messages
+ * to specified files.
+ *
+ * The FileLg structure offers a flexible and reusable logging solution,
+ * allowing developers to customize log output to specific files based on their
+ * requirements. It is designed to enhance debugging, error reporting, and
+ * information gathering in C applications.
  */
 
 #ifndef FILE_LOG_H
