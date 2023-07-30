@@ -1,13 +1,13 @@
 // open source c library
 // ==================================
 //
-// log.h
+// console_log.h
 //
 // Daniel Tanase
-// 29/07/23
+// 30/07/23
 
 /*
- * The KClog structure, provides a generic logging mechanism with various
+ * The ConsoleLog structure, provides a generic logging mechanism with various
  * functionalities. It allows users to log messages with additional contextual
  * information such as file name, line number, and function name. The structure
  * contains function pointers for different logging operations.
@@ -16,13 +16,13 @@
  * context-specific information for each logged message.
  */
 
-#ifndef LOG_H
-#define LOG_H
+#ifndef CONSOLE_LOG_H
+#define CONSOLE_LOG_H
 
 #include <stdio.h>
 #include <stdlib.h>
 
-struct KClog {
+struct ConsoleLog {
   // will display a red error message on the screen
   void (*log_error)(const char* error, const char* description,
       const char* file, const int line, const char* func);
@@ -34,16 +34,12 @@ struct KClog {
   // will display a yellow error message on the screen
   void (*log_warning)(const char* warning, const char* description,
       const char* file, const int line, const char* func);
-
-  // will write a message to a specified file
-  void (*log_to_file)(const char* file_path, const char* log,
-      const char* message, const char* file, const int line, const char* func);
 };
 
 // the constructor should be used to create a new instance
-struct KClog* new_log();
+struct ConsoleLog* new_console_log();
 
 // the destructor should be used to destroy an existing instance
-void destroy_log(struct KClog* log);
+void destroy_console_log(struct ConsoleLog* log);
 
-#endif /* LOG_H */
+#endif /* CONSOLE_LOG_H */
