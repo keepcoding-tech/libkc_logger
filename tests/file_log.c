@@ -1,6 +1,7 @@
 #include "../include/file_log.h"
 
 #include <assert.h>
+#include <stdio.h>
 #include <string.h>
 
 // Test the creation and destruction of an instance.
@@ -29,20 +30,20 @@ void test_log_to_file() {
   fgets(read_line, sizeof(read_line), read_file);
 
   fgets(read_line, sizeof(read_line), read_file);
-  char* test = "tests/log.c: in function ‘test_log_to_file’";
-  for (int i = 0; i < strlen(read_line) - 1; ++i) {
+  char* test = "tests/file_log.c: in function ‘test_log_to_file’";
+  for (int i = 0; i < strlen(test) - 1; ++i) {
     assert(read_line[i] == test[i]);
   }
 
   fgets(read_line, sizeof(read_line), read_file);
-  test = "tests/log.c:21 message: THIS IS JUST A TEST!!!";
-  for (int i = 0; i < strlen(read_line) - 1; ++i) {
+  test = "tests/file_log.c:22 message: THIS IS JUST A TEST!!!";
+  for (int i = 0; i < strlen(test) - 1; ++i) {
     assert(read_line[i] == test[i]);
   }
 
   fgets(read_line, sizeof(read_line), read_file);
   test = "  This is a test description! XD";
-  for (int i = 0; i < strlen(read_line) - 1; ++i) {
+  for (int i = 0; i < strlen(test) - 1; ++i) {
     assert(read_line[i] == test[i]);
   }
 
