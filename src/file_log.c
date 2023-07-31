@@ -4,7 +4,7 @@
 #include <time.h>
 
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
-void write_to_file(const char* file_path, const char* log, const char* message,
+void log_to_file(const char* file_path, const char* log, const char* message,
     const char* file, const int line, const char* func);
 
 // MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS
@@ -24,7 +24,7 @@ struct FileLog* new_file_log() {
   }
 
   // assign the public member methods
-  new_log->log_to_file = write_to_file;
+  new_log->log_to_file = log_to_file;
 
   return new_log;
 }
@@ -46,7 +46,7 @@ void destroy_file_log(struct FileLog* log) {
 // MARK: PUBLIC MEMBER METHODS DEFINITIONS
 
 // This function will write a message to a specified file.
-void write_to_file(const char* filename, const char* log, const char* message,
+void log_to_file(const char* filename, const char* log, const char* message,
     const char* file, const int line, const char* func) {
   // open the file in append mode (creates a new file if it doesn't exist)
   FILE *write_file = fopen(filename, "a");
