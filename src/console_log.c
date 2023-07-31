@@ -3,11 +3,11 @@
 #include <time.h>
 
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
-void display_console_error(const char* error, const char* description,
+void log_error(const char* error, const char* description,
     const char* file, const int line, const char* func);
-void display_console_message(const char* title, const char* message,
+void log_message(const char* title, const char* message,
     const char* file, const int line, const char* func);
-void display_console_warning(const char* warning, const char* description,
+void log_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func);
 
 // MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS
@@ -19,16 +19,16 @@ struct ConsoleLog* new_console_log() {
 
   // confirm that there is memory to allocate
   if (new_log == NULL) {
-    display_console_error("OUT_OF_MEMORY", "Failing to allocate memory "
+    log_error("OUT_OF_MEMORY", "Failing to allocate memory "
         "dynamically (using 'malloc') due to insufficient memory in the heap.",
         __FILE__, __LINE__, __func__);
     return NULL;
   }
 
   // assign the public member methods
-  new_log->log_error = display_console_error;
-  new_log->log_message = display_console_message;
-  new_log->log_warning = display_console_warning;
+  new_log->log_error = log_error;
+  new_log->log_message = log_message;
+  new_log->log_warning = log_warning;
 
   return new_log;
 }
@@ -37,7 +37,7 @@ struct ConsoleLog* new_console_log() {
 void destroy_console_log(struct ConsoleLog* log) {
   // free the memory only if the log is not null reference
   if (log == NULL) {
-    display_console_warning("NULL_REFERENCE", "Attempting to use a reference "
+    log_warning("NULL_REFERENCE", "Attempting to use a reference "
         "or pointer that points to NULL, or is uninitialized.",
         __FILE__, __LINE__, __func__);
     return;
@@ -49,7 +49,7 @@ void destroy_console_log(struct ConsoleLog* log) {
 // MARK: PUBLIC MEMBER METHODS DEFINITIONS
 
 // This function will display a red error message on the screen.
-void display_console_error(const char* error, const char* description,
+void log_error(const char* error, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
@@ -59,7 +59,7 @@ void display_console_error(const char* error, const char* description,
 }
 
 // This function will display a simple message on the screen.
-void display_console_message(const char* title, const char* message,
+void log_message(const char* title, const char* message,
     const char* file, const int line, const char* func) {
   printf("\n");
   printf("%s: in function ‘%s’ \n", file, func);
@@ -68,7 +68,7 @@ void display_console_message(const char* title, const char* message,
 }
 
 // This function will display a yellow error message on the screen.
-void display_console_warning(const char* warning, const char* description,
+void log_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[33m ANSI escape code for yellow color
   printf("\n");
