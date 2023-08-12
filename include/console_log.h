@@ -23,6 +23,10 @@
 #include <stdlib.h>
 
 struct ConsoleLog {
+  // will display a white debug message on the screen
+  void (*log_debug)(const char* debug, const char* description,
+      const char* file, const int line, const char* func);
+
   // will display a red error message on the screen
   void (*log_error)(const char* error, const char* description,
       const char* file, const int line, const char* func);

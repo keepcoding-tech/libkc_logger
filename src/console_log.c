@@ -3,6 +3,8 @@
 #include <time.h>
 
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
+void log_debug(const char* debug, const char* description,
+    const char* file, const int line, const char* func);
 void log_error(const char* error, const char* description,
     const char* file, const int line, const char* func);
 void log_message(const char* title, const char* message,
@@ -26,6 +28,7 @@ struct ConsoleLog* new_console_log() {
   }
 
   // assign the public member methods
+  new_log->log_debug = log_debug;
   new_log->log_error = log_error;
   new_log->log_message = log_message;
   new_log->log_warning = log_warning;
@@ -47,6 +50,15 @@ void destroy_console_log(struct ConsoleLog* log) {
 }
 
 // MARK: PUBLIC MEMBER METHODS DEFINITIONS
+
+// This function will display a white debug message on the screen.
+void log_debug(const char* debug, const char* description,
+    const char* file, const int line, const char* func) {
+  printf("\n");
+  printf("%s: in function ‘%s’ \n", file, func);
+  printf("%s:%d message: %s \n", file, line, debug);
+  printf("  %s\n", description);
+}
 
 // This function will display a red error message on the screen.
 void log_error(const char* error, const char* description,
