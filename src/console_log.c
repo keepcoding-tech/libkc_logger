@@ -7,6 +7,8 @@ void log_debug(const char* debug, const char* description,
     const char* file, const int line, const char* func);
 void log_error(const char* error, const char* description,
     const char* file, const int line, const char* func);
+void log_fatal(const char* error, const char* description,
+    const char* file, const int line, const char* func);
 void log_message(const char* title, const char* message,
     const char* file, const int line, const char* func);
 void log_warning(const char* warning, const char* description,
@@ -30,6 +32,7 @@ struct ConsoleLog* new_console_log() {
   // assign the public member methods
   new_log->log_debug = log_debug;
   new_log->log_error = log_error;
+  new_log->log_fatal = log_fatal;
   new_log->log_message = log_message;
   new_log->log_warning = log_warning;
 
@@ -68,6 +71,17 @@ void log_error(const char* error, const char* description,
   printf("\033[31m%s: in function ‘%s’ \033[0m \n", file, func);
   printf("\033[31m%s:%d error: %s \033[0m \n", file, line, error);
   printf("\033[31m  %s \033[0m \n", description);
+}
+
+// This function will display a red error message on the screen and exits.
+void log_fatal(const char* error, const char* description,
+    const char* file, const int line, const char* func) {
+  // use the \033[31m ANSI escape code for red color
+  printf("\n");
+  printf("\033[31m%s: in function ‘%s’ \033[0m \n", file, func);
+  printf("\033[31m%s:%d error: %s \033[0m \n", file, line, error);
+  printf("\033[31m  %s \033[0m \n", description);
+  exit(1);
 }
 
 // This function will display a simple message on the screen.
