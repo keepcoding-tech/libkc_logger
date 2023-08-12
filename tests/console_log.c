@@ -9,6 +9,17 @@ void test_creation_and_destruction() {
   destroy_console_log(log);
 }
 
+// Test case for the log_debug() method.
+void test_log_debug() {
+  struct ConsoleLog* log = new_console_log();
+
+  // log the error to the console
+  log->log_debug("THIS IS JUST A TEST!!!", "This is a test description! XD",
+      __FILE__, __LINE__, __func__);
+
+  destroy_console_log(log);
+}
+
 // Test case for the log_error() method.
 void test_log_error() {
   struct ConsoleLog* log = new_console_log();
@@ -46,6 +57,7 @@ void test_log_warning() {
 
 int main() {
   test_creation_and_destruction();
+  test_log_debug();
   test_log_error();
   test_log_message();
   test_log_warning();
