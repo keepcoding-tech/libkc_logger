@@ -55,11 +55,24 @@ void test_log_warning() {
   destroy_console_log(log);
 }
 
+// Test case for the log_fatal() method.
+void test_log_fatal() {
+  struct ConsoleLog* log = new_console_log();
+
+  // log the error to the console
+  log->log_fatal("THIS IS JUST A TEST!!!", "After this test, the program "
+      "will exit with a status code of 1. This is GOOD!!",
+      __FILE__, __LINE__, __func__);
+
+  destroy_console_log(log);
+}
+
 int main() {
   test_creation_and_destruction();
   test_log_debug();
   test_log_error();
   test_log_message();
   test_log_warning();
+  test_log_fatal();
   return 0;
 }
