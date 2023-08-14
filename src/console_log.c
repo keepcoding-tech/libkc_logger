@@ -3,15 +3,15 @@
 #include <time.h>
 
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
-void log_debug(const char* debug, const char* description,
+void debug(const char* debug, const char* description,
     const char* file, const int line, const char* func);
-void log_error(const char* error, const char* description,
+void error(const char* error, const char* description,
     const char* file, const int line, const char* func);
-void log_fatal(const char* error, const char* description,
+void fatal(const char* error, const char* description,
     const char* file, const int line, const char* func);
-void log_message(const char* title, const char* message,
+void message(const char* title, const char* message,
     const char* file, const int line, const char* func);
-void log_warning(const char* warning, const char* description,
+void warning(const char* warning, const char* description,
     const char* file, const int line, const char* func);
 
 // MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS
@@ -23,18 +23,18 @@ struct ConsoleLog* new_console_log() {
 
   // confirm that there is memory to allocate
   if (new_log == NULL) {
-    log_error("OUT_OF_MEMORY", "Failing to allocate memory "
+    error("OUT_OF_MEMORY", "Failing to allocate memory "
         "dynamically (using 'malloc') due to insufficient memory in the heap.",
         __FILE__, __LINE__, __func__);
     return NULL;
   }
 
   // assign the public member methods
-  new_log->log_debug = log_debug;
-  new_log->log_error = log_error;
-  new_log->log_fatal = log_fatal;
-  new_log->log_message = log_message;
-  new_log->log_warning = log_warning;
+  new_log->debug = debug;
+  new_log->error = error;
+  new_log->fatal = fatal;
+  new_log->message = message;
+  new_log->warning = warning;
 
   return new_log;
 }
@@ -43,7 +43,7 @@ struct ConsoleLog* new_console_log() {
 void destroy_console_log(struct ConsoleLog* log) {
   // free the memory only if the log is not null reference
   if (log == NULL) {
-    log_warning("NULL_REFERENCE", "Attempting to use a reference "
+    warning("NULL_REFERENCE", "Attempting to use a reference "
         "or pointer that points to NULL, or is uninitialized.",
         __FILE__, __LINE__, __func__);
     return;
@@ -55,7 +55,7 @@ void destroy_console_log(struct ConsoleLog* log) {
 // MARK: PUBLIC MEMBER METHODS DEFINITIONS
 
 // This function will display a white debug message on the screen.
-void log_debug(const char* debug, const char* description,
+void debug(const char* debug, const char* description,
     const char* file, const int line, const char* func) {
   printf("\n");
   printf("%s: in function ‘%s’ \n", file, func);
@@ -64,7 +64,7 @@ void log_debug(const char* debug, const char* description,
 }
 
 // This function will display a red error message on the screen.
-void log_error(const char* error, const char* description,
+void error(const char* error, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
@@ -74,7 +74,7 @@ void log_error(const char* error, const char* description,
 }
 
 // This function will display a red error message on the screen and exits.
-void log_fatal(const char* error, const char* description,
+void fatal(const char* error, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
@@ -85,7 +85,7 @@ void log_fatal(const char* error, const char* description,
 }
 
 // This function will display a simple message on the screen.
-void log_message(const char* title, const char* message,
+void message(const char* title, const char* message,
     const char* file, const int line, const char* func) {
   printf("\n");
   printf("%s: in function ‘%s’ \n", file, func);
@@ -94,7 +94,7 @@ void log_message(const char* title, const char* message,
 }
 
 // This function will display a yellow error message on the screen.
-void log_warning(const char* warning, const char* description,
+void warning(const char* warning, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[33m ANSI escape code for yellow color
   printf("\n");
@@ -102,4 +102,5 @@ void log_warning(const char* warning, const char* description,
   printf("\033[33m%s:%d warning: %s \033[0m \n", file, line, warning);
   printf("\033[33m  %s  \033[0m \n", description);
 }
+
 
