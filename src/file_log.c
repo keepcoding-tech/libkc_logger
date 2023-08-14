@@ -17,7 +17,7 @@ struct FileLog* new_file_log() {
   // confirm that there is memory to allocate
   if (new_log == NULL) {
     struct ConsoleLog* log = new_console_log();
-    log->log_error("OUT_OF_MEMORY", "Failing to allocate memory "
+    log->error("OUT_OF_MEMORY", "Failing to allocate memory "
         "dynamically (using 'malloc') due to insufficient memory in the heap.",
         __FILE__, __LINE__, __func__);
     return NULL;
@@ -34,7 +34,7 @@ void destroy_file_log(struct FileLog* log) {
   // free the memory only if the log is not null reference
   if (log == NULL) {
     struct ConsoleLog* log = new_console_log();
-    log->log_warning("NULL_REFERENCE", "Attempting to use a reference "
+    log->warning("NULL_REFERENCE", "Attempting to use a reference "
         "or pointer that points to NULL, or is uninitialized.",
         __FILE__, __LINE__, __func__);
     return;
@@ -56,7 +56,7 @@ void log_to_file(const char* filename, const char* log, const char* message,
     struct ConsoleLog* log = new_console_log();
     char error_description[256];
     sprintf(error_description, "Failed to open the specified file: %s", filename);
-    log->log_error("CANNOT_OPEN_FILE", error_description,
+    log->error("CANNOT_OPEN_FILE", error_description,
         __FILE__, __LINE__, __func__);
 
     // exit the program
@@ -83,3 +83,4 @@ void log_to_file(const char* filename, const char* log, const char* message,
   // close the file
   fclose(write_file);
 }
+
