@@ -1,79 +1,58 @@
-#include "../include/console_log.h"
+#include "../include/file_log.h"
 
 #include <assert.h>
+#include <stdio.h>
 #include <string.h>
 
 // Test the creation and destruction of an instance.
 void test_creation_and_destruction() {
-  struct ConsoleLog* log = new_console_log();
-  destroy_console_log(log);
+  struct FileLog* log = new_file_log();
+  destroy_file_log(log);
 }
 
-// Test case for the log_debug() method.
-void test_log_debug() {
-  struct ConsoleLog* log = new_console_log();
+// Test case for the log_to_file() method.
+void test_log_to_file() {
+  struct FileLog* log = new_file_log();
 
-  // log the error to the console
-  log->debug("THIS IS JUST A TEST!!!", "This is a test description! XD",
-      __FILE__, __LINE__, __func__);
+  const char* filename = "build/bin/test/test.log";
 
-  destroy_console_log(log);
-}
+  // write the log to the file
+  log->log_to_file(filename, "THIS IS JUST A TEST!!!",
+      "This is a test description! XD",
+      __FILE__, __LINE__, __func__); // DO NOT MOVE THIS LINE!!!
 
-// Test case for the log_error() method.
-void test_log_error() {
-  struct ConsoleLog* log = new_console_log();
+  // check if the log was printed correctely
+  FILE *read_file = fopen(filename, "r");
+  char read_line[100];
 
-  // log the error to the console
-  log->error("THIS IS JUST A TEST!!!", "This is a test description! XD",
-      __FILE__, __LINE__, __func__);
+  // skip the next two lines
+  fgets(read_line, sizeof(read_line), read_file);
+  fgets(read_line, sizeof(read_line), read_file);
 
-  destroy_console_log(log);
-}
+  fgets(read_line, sizeof(read_line), read_file);
+  char* test = "tests/file_log.c: in function ‘test_log_to_file’";
+  for (int i = 0; i < strlen(test) - 1; ++i) {
+    assert(read_line[i] == test[i]);
+  }
 
-// Test case for the log_message() method.
-void test_log_message() {
-  struct ConsoleLog* log = new_console_log();
+  fgets(read_line, sizeof(read_line), read_file);
+  test = "tests/file_log.c:22 message: THIS IS JUST A TEST!!!";
+  for (int i = 0; i < strlen(test) - 1; ++i) {
+    assert(read_line[i] == test[i]);
+  }
 
-  // log the message to the console
-  log->message("THIS IS JUST A TEST!!!", "If you see this message, don't "
-      "worry, this is just a test. :D \nActually, seeing this means the test "
-      "is working as it should.",
-      __FILE__, __LINE__, __func__);
+  fgets(read_line, sizeof(read_line), read_file);
+  test = "  This is a test description! XD";
+  for (int i = 0; i < strlen(test) - 1; ++i) {
+    assert(read_line[i] == test[i]);
+  }
 
-  destroy_console_log(log);
-}
-
-// Test case for the log_warning() method.
-void test_log_warning() {
-  struct ConsoleLog* log = new_console_log();
-
-  // log the warning to the console
-  log->warning("THIS IS JUST A TEST!!!", "This is a test description! XD",
-      __FILE__, __LINE__, __func__);
-
-  destroy_console_log(log);
-}
-
-// Test case for the log_fatal() method.
-void test_log_fatal() {
-  struct ConsoleLog* log = new_console_log();
-
-  // log the error to the console
-  log->fatal("THIS IS JUST A TEST!!!", "After this test, the program "
-      "will exit with a status code of 1. This is GOOD!!",
-      __FILE__, __LINE__, __func__);
-
-  destroy_console_log(log);
+  destroy_file_log(log);
 }
 
 int main() {
   test_creation_and_destruction();
-  test_log_debug();
-  test_log_error();
-  test_log_message();
-  test_log_warning();
-  test_log_fatal();
+  test_log_to_file();
   return 0;
 }
 
