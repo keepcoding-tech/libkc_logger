@@ -1,10 +1,10 @@
-// open source c library
+// This file is part of kclog
 // ==================================
 //
 // file_log.h
 //
-// Daniel Tanase
-// 30/07/23
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
 
 /*
  * The FileLog structure provides a logging mechanism to write log messages

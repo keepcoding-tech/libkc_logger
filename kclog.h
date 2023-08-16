@@ -1,10 +1,10 @@
-// open source c library
+// This file is part of kclog
 // ==================================
 //
 // kclog.h
 //
-// Daniel Tanase
-// 29/07/23
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
 
 /*
  * You can utilize this header file to import the complete kclog library

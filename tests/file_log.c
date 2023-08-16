@@ -1,3 +1,11 @@
+// This file is part of kclog
+// ==================================
+//
+// file_log.c
+//
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
+
 #include "../include/file_log.h"
 
 #include <assert.h>
@@ -36,7 +44,7 @@ void test_log_to_file() {
   }
 
   fgets(read_line, sizeof(read_line), read_file);
-  test = "tests/file_log.c:22 message: THIS IS JUST A TEST!!!";
+  test = "tests/file_log.c:30 message: THIS IS JUST A TEST!!!";
   for (int i = 0; i < strlen(test) - 1; ++i) {
     assert(read_line[i] == test[i]);
   }

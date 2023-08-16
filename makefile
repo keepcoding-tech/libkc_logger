@@ -1,7 +1,10 @@
-# kclog lib
+# This file is part of kclog
+# ==================================
 #
-# Daniel Tanase
-# 29/07/23
+# makefile
+#
+# Copyright (c) 2023 Daniel Tanase
+# SPDX-License-Identifier: MIT License
 #
 #                  _         __ _ _
 #                 | |       / _(_) |

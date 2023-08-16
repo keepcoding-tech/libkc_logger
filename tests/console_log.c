@@ -1,3 +1,11 @@
+// This file is part of kclog
+// ==================================
+//
+// console_log.c
+//
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
+
 #include "../include/console_log.h"
 
 #include <assert.h>

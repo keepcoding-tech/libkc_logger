@@ -1,13 +1,21 @@
+// This file is part of kclog
+// ==================================
+//
+// file_log.c
+//
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
+
 #include "../include/console_log.h"
 #include "../include/file_log.h"
 
 #include <time.h>
 
-// MARK: PUBLIC MEMBER METHODS PROTOTYPES
+/* MARK: PUBLIC MEMBER METHODS PROTOTYPES */
 void log_to_file(const char* file_path, const char* log, const char* message,
     const char* file, const int line, const char* func);
 
-// MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS
+/* MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS */
 
 // The constructor should be used to create a new instance
 struct FileLog* new_file_log() {
@@ -41,7 +49,7 @@ void destroy_file_log(struct FileLog* log) {
   free(log);
 }
 
-// MARK: PUBLIC MEMBER METHODS DEFINITIONS
+/* MARK: PUBLIC MEMBER METHODS DEFINITIONS */
 
 // This function will write a message to a specified file.
 void log_to_file(const char* filename, const char* log, const char* message,

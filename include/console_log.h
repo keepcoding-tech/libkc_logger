@@ -1,10 +1,10 @@
-// open source c library
+// This file is part of kclog
 // ==================================
 //
 // console_log.h
 //
-// Daniel Tanase
-// 30/07/23
+// Copyright (c) 2023 Daniel Tanase
+// SPDX-License-Identifier: MIT License
 
 /*
  * The ConsoleLog structure, provides a generic logging mechanism with various
