@@ -111,9 +111,9 @@ static void display_warning_message(struct ConsoleLog* self,
 void log_debug(const char* title, const char* description,
     const char* file, const int line, const char* func) {
   printf("\n");
-  printf("%s: in function ‘%s’ \n", file, func);
-  printf("%s:%d message: %s \n", file, line, title);
-  printf("  %s\n", description);
+  printf("[DEBUG] %s:%d in function ‘%s’ \n", file, line, func);
+  printf("[%s] %s\n", title, description);
+  printf("\n");
 }
 
 // This function will display a red error message on the screen.
@@ -121,9 +121,9 @@ void log_error(const char* exception, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
-  printf("\033[31m%s: in function ‘%s’ \033[0m \n", file, func);
-  printf("\033[31m%s:%d error: %s \033[0m \n", file, line, exception);
-  printf("\033[31m  %s \033[0m \n", description);
+  printf("\033[31m[ERROR] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
+  printf("\033[31m[%s] %s \033[0m \n", exception, description);
+  printf("\n");
 }
 
 // This function will display a red error message on the screen and exits.
@@ -131,9 +131,9 @@ void log_fatal(const char* exception, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
-  printf("\033[31m%s: in function ‘%s’ \033[0m \n", file, func);
-  printf("\033[31m%s:%d error: %s \033[0m \n", file, line, exception);
-  printf("\033[31m  %s \033[0m \n", description);
+  printf("\033[31m[FATAL] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
+  printf("\033[31m[%s] %s \033[0m \n", exception, description);
+  printf("\n");
   exit(1);
 }
 
@@ -141,9 +141,9 @@ void log_fatal(const char* exception, const char* description,
 void log_message(const char* title, const char* description,
     const char* file, const int line, const char* func) {
   printf("\n");
-  printf("%s: in function ‘%s’ \n", file, func);
-  printf("%s:%d message: %s \n", file, line, title);
-  printf("  %s\n", description);
+  printf("[INFO] %s:%d in function ‘%s’ \n", file, line, func);
+  printf("[%s] %s\n", title, description);
+  printf("\n");
 }
 
 // This function will display a yellow error message on the screen.
@@ -151,8 +151,8 @@ void log_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func) {
   // use the \033[33m ANSI escape code for yellow color
   printf("\n");
-  printf("\033[33m%s: in function ‘%s’ \033[0m \n", file, func);
-  printf("\033[33m%s:%d warning: %s \033[0m \n", file, line, warning);
-  printf("\033[33m  %s  \033[0m \n", description);
+  printf("\033[33m[WARNING] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
+  printf("\033[33m[%s] %s \033[0m \n", warning, description);
+  printf("\n");
 }
 
