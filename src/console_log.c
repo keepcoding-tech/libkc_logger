@@ -1,7 +1,5 @@
 #include "../include/console_log.h"
 
-#include <time.h>
-
 // MARK: PUBLIC MEMBER METHODS PROTOTYPES
 void log_debug(const char* debug, const char* description,
     const char* file, const int line, const char* func);
