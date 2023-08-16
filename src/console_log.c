@@ -30,11 +30,11 @@ struct ConsoleLog* new_console_log() {
   }
 
   // assign the public member methods
-  new_log->log_debug = log_debug;
-  new_log->log_error = log_error;
-  new_log->log_fatal = log_fatal;
-  new_log->log_message = log_message;
-  new_log->log_warning = log_warning;
+  new_log->debug = log_debug;
+  new_log->error = log_error;
+  new_log->fatal = log_fatal;
+  new_log->message = log_message;
+  new_log->warning = log_warning;
 
   return new_log;
 }
