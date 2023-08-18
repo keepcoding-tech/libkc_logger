@@ -42,7 +42,7 @@ struct ConsoleLog {
     const int index, const int line, const char* func);
 
   // will display a simple message on the screen
-  void (*message)(struct ConsoleLog* self,
+  void (*info)(struct ConsoleLog* self,
     const int index, const int line, const char* func);
 
   // will display a yellow error message on the screen
@@ -72,7 +72,7 @@ void log_fatal(const char* exception, const char* description,
   const char* file, const int line, const char* func);
 
 // will display a simple message on the screen
-void log_message(const char* title, const char* description,
+void log_info(const char* title, const char* description,
   const char* file, const int line, const char* func);
 
 // will display a yellow error message on the screen
