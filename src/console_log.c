@@ -27,7 +27,7 @@ void log_error(const char* exception, const char* description,
     const char* file, const int line, const char* func);
 void log_fatal(const char* exception, const char* description,
     const char* file, const int line, const char* func);
-void log_message(const char* title, const char* description,
+void log_info(const char* title, const char* description,
     const char* file, const int line, const char* func);
 void log_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func);
@@ -57,7 +57,7 @@ struct ConsoleLog* new_console_log(const char** exceptions,
   new_log->debug = display_debug_message;
   new_log->error = display_error_message;
   new_log->fatal = display_fatal_message;
-  new_log->message = display_info_message;
+  new_log->info = display_info_message;
   new_log->warning = display_warning_message;
 
   return new_log;
@@ -102,7 +102,7 @@ static void display_fatal_message(struct ConsoleLog* self,
 // This function will simply call the public function with enforced parameters
 static void display_info_message(struct ConsoleLog* self,
     const int index, const int line, const char* func) {
-  log_message(self->exceptions[index],
+  log_info(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
@@ -146,7 +146,7 @@ void log_fatal(const char* exception, const char* description,
 }
 
 // This function will display a simple message on the screen.
-void log_message(const char* title, const char* description,
+void log_info(const char* title, const char* description,
     const char* file, const int line, const char* func) {
   printf("\n");
   printf("[INFO] %s:%d in function ‘%s’ \n", file, line, func);

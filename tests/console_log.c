@@ -14,7 +14,7 @@
 const char* ex[] = {
   "TEST_DEBUG",
   "TEST_ERROR",
-  "TEST_MESSAGE",
+  "TEST_INFO",
   "TEST_WARNING",
   "TEST_FATAL"
 };
@@ -22,7 +22,7 @@ const char* ex[] = {
 const char* log_ex[] = {
   "This is just a test description for debug! XD",
   "This is just a test description for error! XD",
-  "This is just a test description for message! XD",
+  "This is just a test description for info! XD",
   "This is just a test description for warning! XD",
   "This is just a test description for fatal! XD\n"
     "After this test, the program will exit with a status code of 1."
@@ -53,12 +53,12 @@ void test_error() {
   destroy_console_log(log);
 }
 
-// Test case for the message() method.
-void test_message() {
+// Test case for the info() method.
+void test_info() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the message to the console
-  log->message(log, 2, __LINE__, __func__);
+  log->info(log, 2, __LINE__, __func__);
   destroy_console_log(log);
 }
 
@@ -84,7 +84,7 @@ int main() {
   test_creation_and_destruction();
   test_debug();
   test_error();
-  test_message();
+  test_info();
   test_warning();
   test_fatal();
   return 0;
