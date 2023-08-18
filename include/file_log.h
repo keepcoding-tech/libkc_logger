@@ -1,4 +1,4 @@
-// This file is part of kclog
+// This file is part of libkc_logger
 // ==================================
 //
 // file_log.h

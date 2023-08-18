@@ -1,14 +1,14 @@
-[![C/C++ CI](https://github.com/Daniel-Tanase/kclog/actions/workflows/c-cpp.yml/badge.svg?branch=master)](https://github.com/Daniel-Tanase/kclog/actions/workflows/c-cpp.yml)
+[![C/C++ CI](https://github.com/Daniel-Tanase/libkc_logger/actions/workflows/c-cpp.yml/badge.svg?branch=master)](https://github.com/Daniel-Tanase/libkc_logger/actions/workflows/c-cpp.yml)
 
 ```
-  _        _
- | |      | |
- | | _____| | ___   __ _
- | |/ / __| |/ _ \ / _` |
- |   < (__| | (_) | (_| |
- |_|\_\___|_|\___/ \__, |
-                    __/ |
-                   |___/
+  _ _ _     _                 _
+ | (_) |   | |               | |
+ | |_| |__ | | _____         | | ___   __ _  __ _  ___ _ __
+ | | | '_ \| |/ / __|        | |/ _ \ / _` |/ _` |/ _ \ '__|
+ | | | |_) |   < (__  ______ | | (_) | (_| | (_| |  __/ |
+ |_|_|_.__/|_|\_\___||______||_|\___/ \__, |\__, |\___|_|
+                                       __/ | __/ |
+                                      |___/ |___/
 ```
 
 #### Q: Are you tired of looking for logger libraries written in C?
@@ -21,11 +21,11 @@ information for each logged message.
 
 ## Download and Install
 
-To download and install the `kclog` library, follow these steps:
+To download and install the `libkc_logger` library, follow these steps:
 
 ```
-$ git clone https://github.com/Daniel-Tanase/kclog.git
-$ cd kclog && make all
+$ git clone https://github.com/Daniel-Tanase/libkc_logger.git
+$ cd libkc_logger && make all
 ```
 
 Yep, this is it! You can start using the library.
@@ -34,10 +34,10 @@ Yep, this is it! You can start using the library.
 
 Because I believe that documenting a project is at least as important as writing
 the project's code, I have created a very comprehensive wiki for this repository,
-explaining in detail how to integrate your code with the `kclog` static
+explaining in detail how to integrate your code with the `libkc_logger` static
 library.
 
-So, head over to the [wiki](https://github.com/Daniel-Tanase/kclog/wiki)
+So, head over to the [wiki](https://github.com/Daniel-Tanase/libkc_logger/wiki)
 to learn more!
 
 ## Testing
@@ -56,12 +56,12 @@ If you have found an issue or would like to submit an improvement to this
 project, please submit an issue using the issues tab above. If you want to
 submit a PR (pull-request) with a fix, please reference the issue you created.
 
-Please review the [contribution](https://github.com/Daniel-Tanase/kclog/blob/master/CONTRIBUTING.md)
+Please review the [contribution](https://github.com/Daniel-Tanase/libkc_logger/blob/master/CONTRIBUTING.md)
 rules and practices before submitting any PR.
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/Daniel-Tanase/kclog/blob/master/LICENSE)
+This project is licensed under the [MIT License](https://github.com/Daniel-Tanase/libkc_logger/blob/master/LICENSE)
 
 <div align="center"> --- </div>
 <div align="center">Created with ❤️ by keepcoding and You!</div>

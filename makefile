@@ -1,4 +1,4 @@
-# This file is part of kclog
+# This file is part of libkc_logger
 # ==================================
 #
 # makefile
@@ -40,7 +40,7 @@ OBJ_DIRS := $(sort $(dir $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)))
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Set the default target
-all: $(OBJECTS) libkclog.a
+all: $(OBJECTS) libkc_logger.a
 
 # Create the build directory and compile the object files
 $(OBJECTS): | $(OBJ_DIRS)
@@ -52,8 +52,8 @@ $(OBJ_DIRS):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	$(CC) $(STD) $(CFLAGS) -c $< -o $@
 
-libkclog.a: $(OBJECTS)
-	ar rcs libkclog.a $(OBJECTS)
+libkc_logger.a: $(OBJECTS)
+	ar rcs libkc_logger.a $(OBJECTS)
 
 ##################################### TEST #####################################
 

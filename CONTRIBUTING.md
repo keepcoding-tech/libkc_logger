@@ -1,16 +1,16 @@
 # CONTRIBUTING
 
-#### The kclog project welcomes new contributors. This document will guide you through the process.
+#### The libkc_logger project welcomes new contributors. This document will guide you through the process.
 
 ## Fork
 
-Fork the project on [GitHub](https://github.com/Daniel-Tanase/kclog)
+Fork the project on [GitHub](https://github.com/Daniel-Tanase/libkc_logger)
 and check out your copy.
 
 ```
-$ git clone https://github.com/[your-username]/kclog.git
-$ cd kclog
-$ git remote add upstream https://github.com/Daniel-Tanase/kclog.git
+$ git clone https://github.com/[your-username]/libkc_logger.git
+$ cd libkc_logger
+$ git remote add upstream https://github.com/Daniel-Tanase/libkc_logger.git
 ```
 
 ## Branch
@@ -28,7 +28,7 @@ Full example:
 
 ## Code
 
-Please adhere to kclog's code style. In general it follows the
+Please adhere to libkc_logger's code style. In general it follows the
 conventions from the [Google C/C++](https://google.github.io/styleguide/cppguide.html)
 style guide. Some of the key points, as well as some additional guidelines, are
 enumerated below.
@@ -121,7 +121,7 @@ there are no test regressions.
 $ git push origin kc/my-feature-branch
 ```
 
-Go to `https://github.com/[your-username]/kclog` and select your
+Go to `https://github.com/[your-username]/libkc_logger` and select your
 feature branch. Click the 'Pull Request' button and fill out the form.
 
 Pull requests are usually reviewed within a few days. If there are comments to
