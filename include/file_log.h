@@ -22,11 +22,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct FileLog {
+struct FileLog
+{
   // will write a message to a specified file
   void (*log_to_file)(const char* file_path, const char* log,
       const char* message, const char* file, const int line, const char* func);
 };
+
+//---------------------------------------------------------------------------//
 
 // the constructor should be used to create a new instance
 struct FileLog* new_file_log();
