@@ -11,6 +11,14 @@
 #include <assert.h>
 #include <string.h>
 
+enum {
+  TEST_DEBUG,
+  TEST_ERROR,
+  TEST_INFO,
+  TEST_WARNING,
+  TEST_FATAL
+};
+
 const char* ex[] = {
   "TEST_DEBUG",
   "TEST_ERROR",
@@ -40,7 +48,7 @@ void test_debug() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the debug to the console
-  log->debug(log, 0, __LINE__, __func__);
+  log->debug(log, TEST_DEBUG, __LINE__, __func__);
   destroy_console_log(log);
 }
 
@@ -49,7 +57,7 @@ void test_error() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the error to the console
-  log->error(log, 1, __LINE__, __func__);
+  log->error(log, TEST_ERROR, __LINE__, __func__);
   destroy_console_log(log);
 }
 
@@ -58,7 +66,7 @@ void test_info() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the message to the console
-  log->info(log, 2, __LINE__, __func__);
+  log->info(log, TEST_INFO, __LINE__, __func__);
   destroy_console_log(log);
 }
 
@@ -67,7 +75,7 @@ void test_warning() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the warning to the console
-  log->warning(log, 3, __LINE__, __func__);
+  log->warning(log, TEST_WARNING, __LINE__, __func__);
   destroy_console_log(log);
 }
 
@@ -76,7 +84,7 @@ void test_fatal() {
   struct ConsoleLog* log = new_console_log(ex, log_ex, __FILE__);
 
   // log the fatal to the console
-  log->fatal(log, 4, __LINE__, __func__);
+  log->fatal(log, TEST_FATAL, __LINE__, __func__);
   destroy_console_log(log);
 }
 

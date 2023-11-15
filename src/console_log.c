@@ -8,7 +8,7 @@
 
 #include "../include/console_log.h"
 
-/* MARK: PRIVATE MEMBER METHODS PROTOTYPES */
+//--- MARK: PRIVATE MEMBER METHODS PROTOTYPES -------------------------------//
 static void display_debug_message(struct ConsoleLog* self,
     const int index, const int line, const char* func);
 static void display_error_message(struct ConsoleLog* self,
@@ -20,7 +20,7 @@ static void display_info_message(struct ConsoleLog* self,
 static void display_warning_message(struct ConsoleLog* self,
     const int index, const int line, const char* func);
 
-/* MARK: PUBLIC MEMBER METHODS PROTOTYPES */
+//--- MARK: PUBLIC MEMBER METHODS PROTOTYPES --------------------------------//
 void log_debug(const char* title, const char* description,
     const char* file, const int line, const char* func);
 void log_error(const char* exception, const char* description,
@@ -32,16 +32,17 @@ void log_info(const char* title, const char* description,
 void log_warning(const char* warning, const char* description,
     const char* file, const int line, const char* func);
 
-/* MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS */
+//---------------------------------------------------------------------------//
 
-// The constructor should be used to create a new instance
 struct ConsoleLog* new_console_log(const char** exceptions,
-    const char** descriptions, const char* file) {
+    const char** descriptions, const char* file)
+{
   // create a ConsoleLog instance to be returned
   struct ConsoleLog* new_log = malloc(sizeof(struct ConsoleLog));
 
   // confirm that there is memory to allocate
-  if (new_log == NULL) {
+  if (new_log == NULL)
+  {
     log_error("OUT_OF_MEMORY", "Failing to allocate memory "
         "dynamically (using 'malloc') due to insufficient memory in the heap.",
         __FILE__, __LINE__, __func__);
@@ -63,10 +64,13 @@ struct ConsoleLog* new_console_log(const char** exceptions,
   return new_log;
 }
 
-// The destructor should be used to destroy an existing instance
-void destroy_console_log(struct ConsoleLog* log) {
+//---------------------------------------------------------------------------//
+
+void destroy_console_log(struct ConsoleLog* log)
+{
   // free the memory only if the log is not null reference
-  if (log == NULL) {
+  if (log == NULL)
+  {
     log_warning("NULL_REFERENCE", "Attempting to use a reference "
         "or pointer that points to NULL, or is uninitialized.",
         __FILE__, __LINE__, __func__);
@@ -76,57 +80,67 @@ void destroy_console_log(struct ConsoleLog* log) {
   free(log);
 }
 
-/* MARK: PRIVATE MEMBER METHODS DEFINITIONS */
+//---------------------------------------------------------------------------//
 
-// This function will simply call the public function with enforced parameters
 static void display_debug_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func) {
+    const int index, const int line, const char* func)
+{
   log_debug(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
-// This function will simply call the public function with enforced parameters
+//---------------------------------------------------------------------------//
+
 static void display_error_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func) {
+    const int index, const int line, const char* func)
+{
   log_error(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
-// This function will simply call the public function with enforced parameters
+//---------------------------------------------------------------------------//
+
 static void display_fatal_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func) {
+    const int index, const int line, const char* func)
+{
   log_fatal(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
-// This function will simply call the public function with enforced parameters
+//---------------------------------------------------------------------------//
+
 static void display_info_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func) {
+    const int index, const int line, const char* func)
+{
   log_info(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
-// This function will simply call the public function with enforced parameters
+//---------------------------------------------------------------------------//
+
 static void display_warning_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func) {
+    const int index, const int line, const char* func)
+{
   log_warning(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
 }
 
-/* MARK: PUBLIC MEMBER METHODS DEFINITIONS */
+//---------------------------------------------------------------------------//
 
-// This function will display a white debug message on the screen.
 void log_debug(const char* title, const char* description,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   printf("\n");
   printf("[DEBUG] %s:%d in function ‘%s’ \n", file, line, func);
   printf("[%s] %s\n", title, description);
   printf("\n");
 }
 
-// This function will display a red error message on the screen.
+//---------------------------------------------------------------------------//
+
 void log_error(const char* exception, const char* description,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   // use the \033[31m ANSI escape code for red color
   printf("\n");
   printf("\033[31m[ERROR] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
@@ -134,9 +148,11 @@ void log_error(const char* exception, const char* description,
   printf("\n");
 }
 
-// This function will display a red error message on the screen and exits.
+//---------------------------------------------------------------------------//
+
 void log_fatal(const char* exception, const char* description,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   // use the \033[31m ANSI escape code for red color
   printf("\n");
   printf("\033[31m[FATAL] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
@@ -145,22 +161,28 @@ void log_fatal(const char* exception, const char* description,
   exit(1);
 }
 
-// This function will display a simple message on the screen.
+//---------------------------------------------------------------------------//
+
 void log_info(const char* title, const char* description,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   printf("\n");
   printf("[INFO] %s:%d in function ‘%s’ \n", file, line, func);
   printf("[%s] %s\n", title, description);
   printf("\n");
 }
 
-// This function will display a yellow error message on the screen.
+//---------------------------------------------------------------------------//
+
 void log_warning(const char* warning, const char* description,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   // use the \033[33m ANSI escape code for yellow color
   printf("\n");
   printf("\033[33m[WARNING] %s:%d in function ‘%s’ \033[0m \n", file, line, func);
   printf("\033[33m[%s] %s \033[0m \n", warning, description);
   printf("\n");
 }
+
+//---------------------------------------------------------------------------//
 

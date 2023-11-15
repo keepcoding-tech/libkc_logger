@@ -6,24 +6,27 @@
 // Copyright (c) 2023 Daniel Tanase
 // SPDX-License-Identifier: MIT License
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "../include/console_log.h"
 #include "../include/file_log.h"
 
 #include <time.h>
 
-/* MARK: PUBLIC MEMBER METHODS PROTOTYPES */
+//--- MARK: PUBLIC MEMBER METHODS PROTOTYPES --------------------------------//
 void log_to_file(const char* file_path, const char* log, const char* message,
     const char* file, const int line, const char* func);
 
-/* MARK: CONSTRUCTOR & DESTRUCTOR DEFINITIONS */
+//---------------------------------------------------------------------------//
 
-// The constructor should be used to create a new instance
-struct FileLog* new_file_log() {
+struct FileLog* new_file_log()
+{
   // create a KClog instance to be returned
   struct FileLog* new_log = malloc(sizeof(struct FileLog));
 
   // confirm that there is memory to allocate
-  if (new_log == NULL) {
+  if (new_log == NULL)
+  {
     log_error("OUT_OF_MEMORY", "Failing to allocate memory "
         "dynamically (using 'malloc') due to insufficient memory in the heap.",
         __FILE__, __LINE__, __func__);
@@ -36,10 +39,13 @@ struct FileLog* new_file_log() {
   return new_log;
 }
 
-// The destructor should be used to destroy an existing instance
-void destroy_file_log(struct FileLog* log) {
+//---------------------------------------------------------------------------//
+
+void destroy_file_log(struct FileLog* log)
+{
   // free the memory only if the log is not null reference
-  if (log == NULL) {
+  if (log == NULL)
+  {
     log_warning("NULL_REFERENCE", "Attempting to use a reference "
         "or pointer that points to NULL, or is uninitialized.",
         __FILE__, __LINE__, __func__);
@@ -49,16 +55,17 @@ void destroy_file_log(struct FileLog* log) {
   free(log);
 }
 
-/* MARK: PUBLIC MEMBER METHODS DEFINITIONS */
+//---------------------------------------------------------------------------//
 
-// This function will write a message to a specified file.
 void log_to_file(const char* filename, const char* log, const char* message,
-    const char* file, const int line, const char* func) {
+    const char* file, const int line, const char* func)
+{
   // open the file in append mode (creates a new file if it doesn't exist)
   FILE *write_file = fopen(filename, "a");
 
   // print an error and exit the program
-  if (write_file == NULL) {
+  if (write_file == NULL)
+  {
     char error_description[256];
     sprintf(error_description, "Failed to open the specified file: %s", filename);
     log_error("CANNOT_OPEN_FILE", error_description,
@@ -88,3 +95,5 @@ void log_to_file(const char* filename, const char* log, const char* message,
   // close the file
   fclose(write_file);
 }
+
+//---------------------------------------------------------------------------//

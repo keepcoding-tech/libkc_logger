@@ -22,7 +22,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct ConsoleLog {
+struct ConsoleLog
+{
   // will hold all the exceptions and
   // descriptions to be logged on the console
   const char** exceptions;
@@ -50,6 +51,8 @@ struct ConsoleLog {
     const int index, const int line, const char* func);
 };
 
+//---------------------------------------------------------------------------//
+
 // the constructor should be used to create a new instance
 struct ConsoleLog* new_console_log(const char** exceptions,
     const char** descriptions, const char* file);
@@ -57,7 +60,7 @@ struct ConsoleLog* new_console_log(const char** exceptions,
 // the destructor should be used to destroy an existing instance
 void destroy_console_log(struct ConsoleLog* log);
 
-/* MARK: PUBLIC FUNCTIONS */
+//---------------------------------------------------------------------------//
 
 // will display a white debug message on the screen
 void log_debug(const char* title, const char* description,
