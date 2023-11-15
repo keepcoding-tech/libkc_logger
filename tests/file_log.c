@@ -6,6 +6,8 @@
 // Copyright (c) 2023 Daniel Tanase
 // SPDX-License-Identifier: MIT License
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #include "../include/file_log.h"
 
 #include <assert.h>
@@ -36,15 +38,16 @@ void test_log_to_file() {
   // skip the next two lines
   fgets(read_line, sizeof(read_line), read_file);
   fgets(read_line, sizeof(read_line), read_file);
-
   fgets(read_line, sizeof(read_line), read_file);
-  char* test = "tests/file_log.c: in function ‘test_log_to_file’";
+
+  char* test = __FILE__ ": in function ‘test_log_to_file’";
   for (int i = 0; i < strlen(test) - 1; ++i) {
+    printf("%c == %c \n", read_line[i], test[i]);
     assert(read_line[i] == test[i]);
   }
 
   fgets(read_line, sizeof(read_line), read_file);
-  test = "tests/file_log.c:30 message: THIS IS JUST A TEST!!!";
+  test = __FILE__ ":32 message: THIS IS JUST A TEST!!!";
   for (int i = 0; i < strlen(test) - 1; ++i) {
     assert(read_line[i] == test[i]);
   }
