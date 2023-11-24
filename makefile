@@ -47,7 +47,7 @@ STATIC_LIBS := $(foreach dir, $(STATIC_LIB_DIRS), $(wildcard $(dir)/*.a))
 OBJECTS := $(SOURCES:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 # Set the default target
-all: $(OBJECTS) libkc_datastructs.a
+all: $(OBJECTS) libkc_logger.a
 
 # Create the build directory and compile the object files
 $(OBJECTS): | $(OBJ_DIRS)
@@ -59,8 +59,8 @@ $(OBJ_DIRS):
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEADERS)
 	$(CC) $(STD) $(CFLAGS) -c $< -o $@
 
-libkc_datastructs.a: $(OBJECTS)
-	ar rcsT libkc_datastructs.a $(OBJECTS) $(STATIC_LIBS)
+libkc_logger.a: $(OBJECTS)
+	ar rcsT libkc_logger.a $(OBJECTS) $(STATIC_LIBS)
 
 ################################### INSTALL ####################################
 
