@@ -24,62 +24,28 @@
 
 struct ConsoleLog
 {
-  // will hold all the exceptions and
-  // descriptions to be logged on the console
   const char** exceptions;
   const char** descriptions;
   const char* file;
 
-  // will display a white debug message on the screen
-  void (*debug)(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-
-  // will display a red error message on the screen
-  void (*error)(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-
-  // will display a red error message on the screen and exit the program
-  void (*fatal)(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-
-  // will display a simple message on the screen
-  void (*info)(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-
-  // will display a yellow error message on the screen
-  void (*warning)(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
+  void (*debug)    (struct ConsoleLog* self, const int index, const int line, const char* func);
+  void (*error)    (struct ConsoleLog* self, const int index, const int line, const char* func);
+  void (*fatal)    (struct ConsoleLog* self, const int index, const int line, const char* func);
+  void (*info)     (struct ConsoleLog* self, const int index, const int line, const char* func);
+  void (*warning)  (struct ConsoleLog* self, const int index, const int line, const char* func);
 };
 
 //---------------------------------------------------------------------------//
 
-// the constructor should be used to create a new instance
-struct ConsoleLog* new_console_log(const char** exceptions,
-    const char** descriptions, const char* file);
-
-// the destructor should be used to destroy an existing instance
-void destroy_console_log(struct ConsoleLog* log);
+struct ConsoleLog* new_console_log      (const char** exceptions, const char** descriptions, const char* file);
+void               destroy_console_log  (struct ConsoleLog* log);
 
 //---------------------------------------------------------------------------//
 
-// will display a white debug message on the screen
-void log_debug(const char* title, const char* description,
-    const char* file, const int line, const char* func);
-
-// will display a red error message on the screen
-void log_error(const char* exception, const char* description,
-    const char* file, const int line, const char* func);
-
-// will display a red error message on the screen and exit the program
-void log_fatal(const char* exception, const char* description,
-  const char* file, const int line, const char* func);
-
-// will display a simple message on the screen
-void log_info(const char* title, const char* description,
-  const char* file, const int line, const char* func);
-
-// will display a yellow error message on the screen
-void log_warning(const char* warning, const char* description,
-  const char* file, const int line, const char* func);
+void log_debug    (const char* title, const char* description, const char* file, const int line, const char* func);
+void log_error    (const char* exception, const char* description, const char* file, const int line, const char* func);
+void log_fatal    (const char* exception, const char* description, const char* file, const int line, const char* func);
+void log_info     (const char* title, const char* description, const char* file, const int line, const char* func);
+void log_warning  (const char* warning, const char* description, const char* file, const int line, const char* func);
 
 #endif /* CONSOLE_LOG_H */

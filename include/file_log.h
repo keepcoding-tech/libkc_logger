@@ -10,7 +10,7 @@
  * The FileLog structure provides a logging mechanism to write log messages
  * to specified files.
  *
- * The FileLg structure offers a flexible and reusable logging solution,
+ * The FileLog structure offers a flexible and reusable logging solution,
  * allowing developers to customize log output to specific files based on their
  * requirements. It is designed to enhance debugging, error reporting, and
  * information gathering in C applications.
@@ -24,17 +24,12 @@
 
 struct FileLog
 {
-  // will write a message to a specified file
-  void (*log_to_file)(const char* file_path, const char* log,
-      const char* message, const char* file, const int line, const char* func);
+  void (*log_to_file)  (const char* file_path, const char* log, const char* message, const char* file, const int line, const char* func);
 };
 
 //---------------------------------------------------------------------------//
 
-// the constructor should be used to create a new instance
-struct FileLog* new_file_log();
-
-// the destructor should be used to destroy an existing instance
-void destroy_file_log(struct FileLog* log);
+struct FileLog* new_file_log      ();
+void            destroy_file_log  (struct FileLog* log);
 
 #endif /* FILE_LOG_H */

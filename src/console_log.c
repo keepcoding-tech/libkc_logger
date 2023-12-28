@@ -9,33 +9,24 @@
 #include "../include/console_log.h"
 
 //--- MARK: PRIVATE MEMBER METHODS PROTOTYPES -------------------------------//
-static void display_debug_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-static void display_error_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-static void display_fatal_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-static void display_info_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
-static void display_warning_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func);
+
+static void display_debug_message    (struct ConsoleLog* self, const int index, const int line, const char* func);
+static void display_error_message    (struct ConsoleLog* self, const int index, const int line, const char* func);
+static void display_fatal_message    (struct ConsoleLog* self, const int index, const int line, const char* func);
+static void display_info_message     (struct ConsoleLog* self, const int index, const int line, const char* func);
+static void display_warning_message  (struct ConsoleLog* self, const int index, const int line, const char* func);
 
 //--- MARK: PUBLIC MEMBER METHODS PROTOTYPES --------------------------------//
-void log_debug(const char* title, const char* description,
-    const char* file, const int line, const char* func);
-void log_error(const char* exception, const char* description,
-    const char* file, const int line, const char* func);
-void log_fatal(const char* exception, const char* description,
-    const char* file, const int line, const char* func);
-void log_info(const char* title, const char* description,
-    const char* file, const int line, const char* func);
-void log_warning(const char* warning, const char* description,
-    const char* file, const int line, const char* func);
+
+void log_debug    (const char* title, const char* description, const char* file, const int line, const char* func);
+void log_error    (const char* exception, const char* description, const char* file, const int line, const char* func);
+void log_fatal    (const char* exception, const char* description, const char* file, const int line, const char* func);
+void log_info     (const char* title, const char* description, const char* file, const int line, const char* func);
+void log_warning  (const char* warning, const char* description, const char* file, const int line, const char* func);
 
 //---------------------------------------------------------------------------//
 
-struct ConsoleLog* new_console_log(const char** exceptions,
-    const char** descriptions, const char* file)
+struct ConsoleLog* new_console_log(const char** exceptions, const char** descriptions, const char* file)
 {
   // create a ConsoleLog instance to be returned
   struct ConsoleLog* new_log = malloc(sizeof(struct ConsoleLog));
@@ -50,15 +41,15 @@ struct ConsoleLog* new_console_log(const char** exceptions,
   }
 
   // assign the exceptions and descriptions arrays
-  new_log->exceptions = exceptions;
+  new_log->exceptions   = exceptions;
   new_log->descriptions = descriptions;
-  new_log->file = file;
+  new_log->file         = file;
 
   // assign the public member methods
-  new_log->debug = display_debug_message;
-  new_log->error = display_error_message;
-  new_log->fatal = display_fatal_message;
-  new_log->info = display_info_message;
+  new_log->debug   = display_debug_message;
+  new_log->error   = display_error_message;
+  new_log->fatal   = display_fatal_message;
+  new_log->info    = display_info_message;
   new_log->warning = display_warning_message;
 
   return new_log;
@@ -82,8 +73,7 @@ void destroy_console_log(struct ConsoleLog* log)
 
 //---------------------------------------------------------------------------//
 
-static void display_debug_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func)
+static void display_debug_message(struct ConsoleLog* self, const int index, const int line, const char* func)
 {
   log_debug(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
@@ -91,8 +81,7 @@ static void display_debug_message(struct ConsoleLog* self,
 
 //---------------------------------------------------------------------------//
 
-static void display_error_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func)
+static void display_error_message(struct ConsoleLog* self, const int index, const int line, const char* func)
 {
   log_error(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
@@ -100,8 +89,7 @@ static void display_error_message(struct ConsoleLog* self,
 
 //---------------------------------------------------------------------------//
 
-static void display_fatal_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func)
+static void display_fatal_message(struct ConsoleLog* self, const int index, const int line, const char* func)
 {
   log_fatal(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
@@ -109,8 +97,7 @@ static void display_fatal_message(struct ConsoleLog* self,
 
 //---------------------------------------------------------------------------//
 
-static void display_info_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func)
+static void display_info_message(struct ConsoleLog* self, const int index, const int line, const char* func)
 {
   log_info(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
@@ -118,8 +105,7 @@ static void display_info_message(struct ConsoleLog* self,
 
 //---------------------------------------------------------------------------//
 
-static void display_warning_message(struct ConsoleLog* self,
-    const int index, const int line, const char* func)
+static void display_warning_message(struct ConsoleLog* self, const int index, const int line, const char* func)
 {
   log_warning(self->exceptions[index],
       self->descriptions[index], self->file, line, func);
@@ -127,8 +113,7 @@ static void display_warning_message(struct ConsoleLog* self,
 
 //---------------------------------------------------------------------------//
 
-void log_debug(const char* title, const char* description,
-    const char* file, const int line, const char* func)
+void log_debug(const char* title, const char* description, const char* file, const int line, const char* func)
 {
   printf("\n");
   printf("[DEBUG] %s:%d in function ‘%s’ \n", file, line, func);
@@ -138,8 +123,7 @@ void log_debug(const char* title, const char* description,
 
 //---------------------------------------------------------------------------//
 
-void log_error(const char* exception, const char* description,
-    const char* file, const int line, const char* func)
+void log_error(const char* exception, const char* description, const char* file, const int line, const char* func)
 {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
@@ -150,8 +134,7 @@ void log_error(const char* exception, const char* description,
 
 //---------------------------------------------------------------------------//
 
-void log_fatal(const char* exception, const char* description,
-    const char* file, const int line, const char* func)
+void log_fatal(const char* exception, const char* description, const char* file, const int line, const char* func)
 {
   // use the \033[31m ANSI escape code for red color
   printf("\n");
@@ -163,8 +146,7 @@ void log_fatal(const char* exception, const char* description,
 
 //---------------------------------------------------------------------------//
 
-void log_info(const char* title, const char* description,
-    const char* file, const int line, const char* func)
+void log_info(const char* title, const char* description, const char* file, const int line, const char* func)
 {
   printf("\n");
   printf("[INFO] %s:%d in function ‘%s’ \n", file, line, func);
@@ -174,8 +156,7 @@ void log_info(const char* title, const char* description,
 
 //---------------------------------------------------------------------------//
 
-void log_warning(const char* warning, const char* description,
-    const char* file, const int line, const char* func)
+void log_warning(const char* warning, const char* description, const char* file, const int line, const char* func)
 {
   // use the \033[33m ANSI escape code for yellow color
   printf("\n");

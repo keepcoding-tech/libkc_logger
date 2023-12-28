@@ -14,14 +14,14 @@
 #include <time.h>
 
 //--- MARK: PUBLIC MEMBER METHODS PROTOTYPES --------------------------------//
-void log_to_file(const char* file_path, const char* log, const char* message,
-    const char* file, const int line, const char* func);
+
+void log_to_file  (const char* file_path, const char* log, const char* message, const char* file, const int line, const char* func);
 
 //---------------------------------------------------------------------------//
 
 struct FileLog* new_file_log()
 {
-  // create a KClog instance to be returned
+  // create a FileLog instance to be returned
   struct FileLog* new_log = malloc(sizeof(struct FileLog));
 
   // confirm that there is memory to allocate
@@ -57,8 +57,7 @@ void destroy_file_log(struct FileLog* log)
 
 //---------------------------------------------------------------------------//
 
-void log_to_file(const char* filename, const char* log, const char* message,
-    const char* file, const int line, const char* func)
+void log_to_file(const char* filename, const char* log, const char* message, const char* file, const int line, const char* func)
 {
   // open the file in append mode (creates a new file if it doesn't exist)
   FILE *write_file = fopen(filename, "a");
