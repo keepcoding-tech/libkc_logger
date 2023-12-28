@@ -1,5 +1,6 @@
 # others
 .vscode
+.log
 
 # prerequisites
 *.d
