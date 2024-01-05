@@ -1,6 +1,5 @@
 # others
 .vscode
-.log
 
 # prerequisites
 *.d
@@ -21,8 +20,8 @@
 *.pch
 
 # libraries
-*.lib
-*.a
+win/*.lib
+build/*.a
 *.la
 *.lo
 
