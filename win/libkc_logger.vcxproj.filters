@@ -21,12 +21,18 @@
     <ClInclude Include="..\include\file_log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\exceptions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\console_log.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\src\file_log.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exceptions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

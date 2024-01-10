@@ -144,10 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\include\console_log.h" />
+    <ClInclude Include="..\include\exceptions.h" />
     <ClInclude Include="..\include\file_log.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\console_log.c" />
+    <ClCompile Include="..\src\exceptions.c" />
     <ClCompile Include="..\src\file_log.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
